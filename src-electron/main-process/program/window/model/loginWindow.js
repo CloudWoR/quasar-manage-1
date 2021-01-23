@@ -1,6 +1,6 @@
 const loginWindow = {
-  width: 600,
-  height: 400,
+  width: 500,
+  height: 600,
   center: true,
   alwaysOnTop: false, // 置顶窗口
   resizable: false, // 固定窗口大小
