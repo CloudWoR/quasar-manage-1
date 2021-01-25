@@ -9,16 +9,11 @@ import modules from './modules'
 
 Vue.use(Vuex)
 
-/*
- * If not building with SSR mode, you can
- * directly export the Store instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Store instance.
- */
-
-// export default function (/* { ssrContext } */) {
+const myPlugin = store => {
+  store.subscribe((mutation, state) => {
+    console.log('提交mutation:', mutation, state)
+  })
+}
 const store = new Vuex.Store({
   state,
   getters,
@@ -27,6 +22,7 @@ const store = new Vuex.Store({
   modules,
   // enable strict mode (adds overhead!)
   // for dev mode only
+  plugins: [myPlugin],
   strict: process.env.DEBUGGING
 })
 

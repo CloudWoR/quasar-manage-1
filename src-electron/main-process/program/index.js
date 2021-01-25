@@ -1,20 +1,25 @@
-import { app } from 'electron'
+import { app, ipcMain } from 'electron'
 import Window from './window'
+import Message from './message'
 class Program {
   constructor () {
     if (!Program.instance) {
       // super()
-      app.on('ready', () => {
-        this.start()
-      })
+      this.start()
+      Program.token = ''
       Program.instance = this
     }
     return Program.instance
   }
 
   start () {
-    this.window = new Window()
-    this.window.showWindow('loginWindow')
+    app.on('ready', () => {
+      this.window = new Window()
+      this.window.showWindow('loginWindow')
+      this.window.destroyWindow('mainWindow')
+      const message = new Message(this.window)
+      message.start()
+    })
   }
 }
 

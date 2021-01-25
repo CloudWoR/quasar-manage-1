@@ -25,9 +25,6 @@ class WindowExample {
         contextIsolation: false
       }
     })
-    // window.on('close', (e) => {
-    //   console.log('e', e)
-    // })
     /**
      * 在这里统一挂载window的事件
      */
@@ -58,7 +55,9 @@ class WindowExample {
     return new Promise(resolve => {
       window.on('ready-to-show', () => {
         window.isReadyToShow = true
-        resolve(window.show())
+        setTimeout(() => {
+          resolve(window.show())
+        }, 600)
       })
     })
   }

@@ -61,7 +61,7 @@ class Window extends WindowExample {
    * @param {String} modelKey .需要隐藏的窗口名称（model对象）
    */
   hideWindow (modelKey) {
-    this._hidewindow(modelKey)
+    this._hideWindow(modelKey)
   }
 
   /**
